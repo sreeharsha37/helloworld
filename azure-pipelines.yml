@@ -82,7 +82,7 @@ steps:
 
 
 - script: |
-    cordova build ios --release
+    cordova build ios
   displayName: 'Generating IOS App through command lines'
 
 
