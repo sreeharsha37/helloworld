@@ -32,7 +32,7 @@ steps:
 - script: |
     npm install -g @angular/cli
     npm install
-    npm run ionic:build
+    #npm run ionic:build
   displayName: 'npm install and build'
 
 # - script: sudo npm install -g appcenter-cli
