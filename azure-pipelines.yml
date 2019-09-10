@@ -82,16 +82,30 @@ steps:
 
 - script: |
     cordova build ios --release
+    pushd "/build"
+    mkdir ./Payload
+    cp -R "$(Agent.BuildDirectory)/platforms/ios/build/emulator/HelloWorld.app" ./Payload
+    zip -qyr MyApp.ipa ./Payload
+    rm -r ./Payload
+    popd
   displayName: 'Generating IOS App through command lines'
 
 
 - task: CopyFiles@2
   inputs:
     SourceFolder: '$(Agent.BuildDirectory)'
-    Contents: '**/*.app'
+    Contents: '**.app'
     TargetFolder: '$(Build.ArtifactStagingDirectory)'
     CleanTargetFolder: true
   displayName: 'Copying IOS App as Artifact'
+
+- task: CopyFiles@2
+  inputs:
+    SourceFolder: '$(Agent.BuildDirectory)'
+    Contents: '**.ipa'
+    TargetFolder: '$(Build.ArtifactStagingDirectory)'
+    CleanTargetFolder: true
+  displayName: 'Copying IOS ipa file as Artifact'
 
 - task: PublishBuildArtifacts@1
   inputs:
