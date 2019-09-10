@@ -42,26 +42,26 @@ steps:
     npm install -g cordova@8.1.2
   displayName: 'Installation of cordova 8.1.2'
 
-# - script: |
-#     cordova platform add android@7.1.1
-#     cordova build android --release
-#   displayName: 'Generating Android App through command lines'
+- script: |
+    cordova platform add android@7.1.1
+    cordova build android --release
+  displayName: 'Generating Android App through command lines'
 
-# - task: AndroidSigning@3
-#   inputs:
-#     apkFiles: '**/*.apk'
-#     apksignerKeystoreFile: 'debug.keystore'
-#     apksignerKeystorePassword: 'android'
-#     apksignerKeystoreAlias: 'androiddebugkey'
-#     apksignerKeyPassword: 'android'
+- task: AndroidSigning@3
+  inputs:
+    apkFiles: '**/*.apk'
+    apksignerKeystoreFile: 'debug.keystore'
+    apksignerKeystorePassword: 'android'
+    apksignerKeystoreAlias: 'androiddebugkey'
+    apksignerKeyPassword: 'android'
 
-# - task: CopyFiles@2
-#   inputs:
-#     SourceFolder: '$(Agent.BuildDirectory)'
-#     Contents: '**/*.apk'
-#     TargetFolder: '$(Build.ArtifactStagingDirectory)'
-#     CleanTargetFolder: true
-#   displayName: 'Copying Android App as Artifact'
+- task: CopyFiles@2
+  inputs:
+    SourceFolder: '$(Agent.BuildDirectory)'
+    Contents: '**/*.apk'
+    TargetFolder: '$(Build.ArtifactStagingDirectory)'
+    CleanTargetFolder: true
+  displayName: 'Copying Android App as Artifact'
 
 - script: |
     cordova platform add ios@5.0.0
@@ -88,7 +88,7 @@ steps:
 - task: CopyFiles@2
   inputs:
     SourceFolder: '$(Agent.BuildDirectory)'
-    Contents: '**/*.ipa'
+    Contents: '**/*.app'
     TargetFolder: '$(Build.ArtifactStagingDirectory)'
     CleanTargetFolder: true
   displayName: 'Copying IOS App as Artifact'
