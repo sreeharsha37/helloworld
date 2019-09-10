@@ -42,26 +42,30 @@ steps:
     npm install -g cordova@8.1.2
   displayName: 'Installation of cordova 8.1.2'
 
+# - script: |
+#     cordova platform add android@7.1.1
+#     cordova build android --release
+#   displayName: 'Generating Android App through command lines'
+
+# - task: AndroidSigning@3
+#   inputs:
+#     apkFiles: '**/*.apk'
+#     apksignerKeystoreFile: 'debug.keystore'
+#     apksignerKeystorePassword: 'android'
+#     apksignerKeystoreAlias: 'androiddebugkey'
+#     apksignerKeyPassword: 'android'
+
+# - task: CopyFiles@2
+#   inputs:
+#     SourceFolder: '$(Agent.BuildDirectory)'
+#     Contents: '**/*.apk'
+#     TargetFolder: '$(Build.ArtifactStagingDirectory)'
+#     CleanTargetFolder: true
+#   displayName: 'Copying Android App as Artifact'
+
 - script: |
-    cordova platform add android@7.1.1
-    cordova build android --release
-  displayName: 'Generating Android App through command lines'
-
-- task: AndroidSigning@3
-  inputs:
-    apkFiles: '**/*.apk'
-    apksignerKeystoreFile: 'debug.keystore'
-    apksignerKeystorePassword: 'android'
-    apksignerKeystoreAlias: 'androiddebugkey'
-    apksignerKeyPassword: 'android'
-
-- task: CopyFiles@2
-  inputs:
-    SourceFolder: '$(Agent.BuildDirectory)'
-    Contents: '**/*.apk'
-    TargetFolder: '$(Build.ArtifactStagingDirectory)'
-    CleanTargetFolder: true
-  displayName: 'Copying Android App as Artifact'
+    cordova platform add ios
+  displayName: 'Adding IOS Platoform'
 
 - task: InstallAppleCertificate@2
   inputs:
@@ -77,12 +81,7 @@ steps:
   displayName: 'Installation Provisioning Profile'
 
 - script: |
-    cordova platform add ios
-  displayName: 'Adding IOS Platoform'
-
-
-- script: |
-    cordova build ios
+    cordova build ios --release
   displayName: 'Generating IOS App through command lines'
 
 
