@@ -8,7 +8,8 @@
           "buildFlag": [
               "EMBEDDED_CONTENT_CONTAINS_SWIFT = YES",
               "ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES=NO",
-              "-UseModernBuildSystem=0"
+              "-UseModernBuildSystem=0",
+              "-allowProvisioningUpdates=0"
           ]
       },
       "release": {
@@ -19,7 +20,8 @@
           "buildFlag": [
               "EMBEDDED_CONTENT_CONTAINS_SWIFT = YES",
               "ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES=NO",
-              "-UseModernBuildSystem=0"
+              "-UseModernBuildSystem=0",
+              "-allowProvisioningUpdates=0"
           ]
       }
   }
