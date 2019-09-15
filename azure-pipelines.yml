@@ -82,8 +82,8 @@ steps:
 
 - script: |
     cordova build ios --device --release
-    cd ${WORKSPACE}/platforms/ios
-    xcodebuild -target HelloWorld -xcconfig ${WORKSPACE}/HelloWorldAppConfig.xcconfig;
+    cd platforms/ios
+    xcodebuild -target HelloWorld -xcconfig HelloWorldAppConfig.xcconfig;
   displayName: 'Generating IOS App through command lines'
 
 - task: CopyFiles@2
