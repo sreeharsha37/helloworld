@@ -41,7 +41,6 @@ steps:
 
 - script: |
     cordova platform add android@7.1.1
-    cordova build android --debug
     cordova build android --release
   displayName: 'Generating Android Release App'
 
