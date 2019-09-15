@@ -45,6 +45,7 @@ steps:
 - script: |
     cordova platform add android@7.1.1
     cordova build android --debug
+    cordova build android --release
   displayName: 'Generating Android App through command lines'
 
 - task: AndroidSigning@3
@@ -82,6 +83,7 @@ steps:
 
 - script: |
     cordova build ios --debug
+    cordova build ios --release
   displayName: 'Generating IOS App through command lines'
 
 # cd platforms/ios
