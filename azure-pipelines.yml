@@ -81,7 +81,6 @@ steps:
   displayName: 'Installation Provisioning Profile'
 
 - script: |
-    cordova build ios --debug
     cd platforms/ios
     xcodebuild -target HelloWorld -xcconfig ./../../HelloWorldAppConfig.xcconfig -allowProvisioningUpdates;
   displayName: 'Generating IOS App through command lines'
