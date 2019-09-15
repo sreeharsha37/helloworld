@@ -89,7 +89,7 @@ steps:
 
 - task: CopyFiles@2
   inputs:
-    SourceFolder: '${WORKSPACE}'
+    SourceFolder: '$(Agent.HomeDirectory)'
     Contents: '*.app'
     TargetFolder: '$(Build.ArtifactStagingDirectory)'
     CleanTargetFolder: true
