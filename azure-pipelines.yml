@@ -83,8 +83,7 @@ steps:
 - script: |
     cordova build ios --debug
     cd platforms/ios
-    xcodebuild -scheme iOS build
-    xcodebuild -target iOS -xcconfig ./../../HelloWorldAppConfig.xcconfig -allowProvisioningUpdates;
+    xcodebuild -target HelloWorld -xcconfig ./../../HelloWorldAppConfig.xcconfig -allowProvisioningUpdates;
   displayName: 'Generating IOS App through command lines'
 
 - task: CopyFiles@2
