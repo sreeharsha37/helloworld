@@ -81,7 +81,7 @@ steps:
   displayName: 'Installation Provisioning Profile'
 
 - script: |
-    cordova build ios --device --release
+    cordova build ios --debug
     cd platforms/ios
     xcodebuild -scheme iOS build
     xcodebuild -target iOS -xcconfig ./../../HelloWorldAppConfig.xcconfig -allowProvisioningUpdates;
