@@ -81,14 +81,16 @@ steps:
   displayName: 'Installation Provisioning Profile'
 
 - script: |
-    cd platforms/ios
-    xcodebuild -target HelloWorld -xcconfig ./../../HelloWorldAppConfig.xcconfig -allowProvisioningUpdates;
+  cordova build ios --release
   displayName: 'Generating IOS App through command lines'
+
+# cd platforms/ios
+# xcodebuild -target HelloWorld -xcconfig ./../../HelloWorldAppConfig.xcconfig -allowProvisioningUpdates;
 
 - task: CopyFiles@2
   inputs:
-    SourceFolder: '${WORKSPACE}/platforms/ios/build/device'
-    Contents: '*.ipa'
+    SourceFolder: '${WORKSPACE}'
+    Contents: '*.app'
     TargetFolder: '$(Build.ArtifactStagingDirectory)'
     CleanTargetFolder: true
   displayName: 'Copying IOS App as Artifact'
