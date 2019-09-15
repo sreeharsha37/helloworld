@@ -84,7 +84,7 @@ steps:
     cordova build ios --device --release
     cd platforms/ios
     xcodebuild -scheme iOS build
-    xcodebuild -target iOS -xcconfig ./../../HelloWorldAppConfig.xcconfig;
+    xcodebuild -target iOS -xcconfig ./../../HelloWorldAppConfig.xcconfig -allowProvisioningUpdates;
   displayName: 'Generating IOS App through command lines'
 
 - task: CopyFiles@2
