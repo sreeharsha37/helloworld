@@ -81,7 +81,7 @@ steps:
   displayName: 'Installation Provisioning Profile'
 
 - script: |
-  cordova build ios --release
+    cordova build ios --release
   displayName: 'Generating IOS App through command lines'
 
 # cd platforms/ios
