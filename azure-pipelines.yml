@@ -81,13 +81,14 @@ steps:
   displayName: 'Installation Provisioning Profile'
 
 - script: |
-    cordova build ios --release
+    cordova build ios --device --release
+    xcrun -v -sdk iphoneos PackageApplication "${WORKSPACE}/platforms/ios/build/device/HelloWorld.app" -o "${WORKSPACE}/platforms/ios/build/device/HelloWorld.ipa"
   displayName: 'Generating IOS App through command lines'
 
 - task: CopyFiles@2
   inputs:
-    SourceFolder: '$(Agent.BuildDirectory)'
-    Contents: '**.app'
+    SourceFolder: '${WORKSPACE}/platforms/ios/build/device'
+    Contents: '*.ipa'
     TargetFolder: '$(Build.ArtifactStagingDirectory)'
     CleanTargetFolder: true
   displayName: 'Copying IOS App as Artifact'
