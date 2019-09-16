@@ -98,7 +98,7 @@ steps:
 - task: CopyFiles@2
   inputs:
     SourceFolder: '$(Agent.BuildDirectory)'
-    Contents: '**/*.app'
+    Contents: '**.app'
     TargetFolder: '$(Build.ArtifactStagingDirectory)'
     CleanTargetFolder: false
     overWrite: false
