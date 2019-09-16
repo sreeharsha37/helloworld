@@ -95,7 +95,7 @@ steps:
 - task: CopyFiles@2
   inputs:
     SourceFolder: '$(Agent.HomeDirectory)'
-    Contents: '*.app'
+    Contents: '**/*.app'
     TargetFolder: '$(Build.ArtifactStagingDirectory)'
     CleanTargetFolder: true
   displayName: 'Copying IOS App as Artifact'
