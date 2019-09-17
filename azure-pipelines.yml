@@ -63,7 +63,7 @@ steps:
     TargetFolder: '$(Build.ArtifactStagingDirectory)'
     CleanTargetFolder: true
     overWrite: false
-    flattenFolders: true
+    flattenFolders: false
     preserveTimestamp: true
   displayName: 'Copying Android App as Artifact'
 
@@ -98,11 +98,11 @@ steps:
 - task: CopyFiles@2
   inputs:
     SourceFolder: '$(Agent.BuildDirectory)'
-    Contents: '**.app'
+    Contents: '**/HelloWorld.app/**'
     TargetFolder: '$(Build.ArtifactStagingDirectory)'
     CleanTargetFolder: false
     overWrite: false
-    flattenFolders: true
+    flattenFolders: false
     preserveTimestamp: true
   displayName: 'Copying IOS App as Artifact'
 
