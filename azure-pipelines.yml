@@ -92,8 +92,12 @@ steps:
     cordova build ios --debug
   displayName: 'Generating IOS Debug App'
 
-# cd platforms/ios
-# xcodebuild -target HelloWorld -xcconfig ./../../HelloWorldAppConfig.xcconfig -allowProvisioningUpdates;
+- script: |
+    mkdir Payload
+    cp -R HelloWorld.app Payload/
+    zip -r -s 64 Payload.zip Payload/
+    mv Payload.zip HelloWorld.ipa
+  displayName: 'Generating IPA file'
 
 - task: CopyFiles@2
   inputs:
@@ -105,6 +109,17 @@ steps:
     flattenFolders: false
     preserveTimestamp: true
   displayName: 'Copying IOS App as Artifact'
+
+- task: CopyFiles@2
+  inputs:
+    SourceFolder: '$(Agent.BuildDirectory)'
+    Contents: '**/*.ipa'
+    TargetFolder: '$(Build.ArtifactStagingDirectory)'
+    CleanTargetFolder: false
+    overWrite: false
+    flattenFolders: false
+    preserveTimestamp: true
+  displayName: 'Copying IOS IPA as Artifact'
 
 # - task: CopyFiles@2
 # pushd "/build"
