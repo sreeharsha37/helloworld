@@ -40,6 +40,10 @@ steps:
   displayName: 'Installation of cordova 8.1.2'
 
 - script: |
+    cordova plugin add cordova-plugin-appcenter-analytics cordova-plugin-appcenter-crashes cordova-plugin-appcenter-push
+  displayName: 'Adding cordova plugins for data analytics'
+
+- script: |
     cordova platform add android@7.1.1
     cordova build android --release
   displayName: 'Generating Android Release App'
