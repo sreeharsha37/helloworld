@@ -98,7 +98,19 @@ steps:
 
 - script: |
     mkdir Payload
-    cp -R **/HelloWorld.app/** Payload/
+
+- task: CopyFiles@2
+  inputs:
+    SourceFolder: '$(Agent.BuildDirectory)'
+    Contents: '**/HelloWorld.app/**'
+    TargetFolder: '$(Agent.BuildDirectory)/Payload/'
+    CleanTargetFolder: false
+    overWrite: false
+    flattenFolders: true
+    preserveTimestamp: true
+  displayName: 'Copying IOS app contents to payload temp folder'
+
+- script: |
     zip -r -s 64 Payload.zip Payload/
     mv Payload.zip HelloWorld.ipa
   displayName: 'Generating IPA file'
