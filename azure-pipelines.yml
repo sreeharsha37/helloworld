@@ -40,7 +40,7 @@ steps:
   displayName: 'Installation of cordova 8.1.2'
 
 - script: |
-    cordova plugin add cordova-plugin-appcenter-analytics cordova-plugin-appcenter-crashes cordova-plugin-appcenter-push
+    cordova plugin add cordova-plugin-appcenter-analytics cordova-plugin-appcenter-crashes
   displayName: 'Adding cordova plugins for data analytics'
 
 - script: |
@@ -98,7 +98,7 @@ steps:
 
 - script: |
     mkdir Payload
-    cp -R HelloWorld.app Payload/
+    cp -R **/HelloWorld.app/** Payload/
     zip -r -s 64 Payload.zip Payload/
     mv Payload.zip HelloWorld.ipa
   displayName: 'Generating IPA file'
@@ -124,20 +124,6 @@ steps:
     flattenFolders: false
     preserveTimestamp: true
   displayName: 'Copying IOS IPA as Artifact'
-
-# - task: CopyFiles@2
-# pushd "/build"
-# mkdir ./Payload
-# cp -R "$(Agent.BuildDirectory)/platforms/ios/build/emulator/HelloWorld.app" ./Payload
-# zip -qyr MyApp.ipa ./Payload
-# rm -r ./Payload
-# popd
-#   inputs:
-#     SourceFolder: '$(Agent.BuildDirectory)'
-#     Contents: '**.ipa'
-#     TargetFolder: '$(Build.ArtifactStagingDirectory)'
-#     CleanTargetFolder: true
-#   displayName: 'Copying IOS ipa file as Artifact'
 
 - task: PublishBuildArtifacts@1
   inputs:
