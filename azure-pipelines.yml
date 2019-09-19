@@ -122,7 +122,7 @@ steps:
 
 - task: IpaResign@1
   inputs:
-    ipaPath: '$(Build.SourcesDirectory)/bin/s/HelloWorld.ipa'
+    ipaPath: '**/*.ipa'
     signFileP12Path: '$(P12Certificate.secureFilePath)'
     signFileP12Password: 'secret'
     provFileProfilePath: '$(ProvisionCertificate.secureFilePath)'
