@@ -163,8 +163,15 @@ steps:
     preserveTimestamp: true
   displayName: 'Copying IOS IPA as Artifact'
 
+- task: PublishSymbols@2
+  inputs:
+    SearchPattern: '**/bin/**/*.pdb'
+    SymbolServerType: 'FileShare'
+    SymbolsPath: '$(Build.ArtifactStagingDirectory)'
+    CompressSymbols: false
+
 - task: PublishBuildArtifacts@1
   inputs:
     pathtoPublish: '$(Build.ArtifactStagingDirectory)'
-    artifactName: 'apps'
+    artifactName: 'Apps and Symbols'
     artifactType: 'container'
