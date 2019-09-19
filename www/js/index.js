@@ -16,6 +16,8 @@
  * specific language governing permissions and limitations
  * under the License.
  */
+AppCenter = require('cordova-plugin-appcenter-crashes')
+
 var app = {
     // Application Constructor
     initialize: function() {
@@ -40,6 +42,9 @@ var app = {
         receivedElement.setAttribute('style', 'display:block;');
 
         console.log('Received Event: ' + id);
+        AppCenter.setLogLevel(Log.VERBOSE);
+        AppCenter.Crashes.hasCrashedInLastSession(success, error);
+        AppCenter.Analytics.setEnabled(true, success, error);
     }
 };
 
