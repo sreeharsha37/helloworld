@@ -43,8 +43,17 @@ var app = {
 
         console.log('Received Event: ' + id);
         AppCenter.setLogLevel(Log.VERBOSE);
-        AppCenter.Crashes.hasCrashedInLastSession(success, error);
-        AppCenter.Analytics.setEnabled(true, success, error);
+        AppCenter.Crashes.hasCrashedInLastSession(function() {
+            console.log('hasCrashedInLastSession() >> SUCCESS');
+        }, function() {
+            console.log('hasCrashedInLastSession() >> ERROR');
+        });
+        AppCenter.Analytics.setEnabled(true, function() {
+            console.log('setEnabled() >> SUCCESS');
+        }, function() {
+            console.log('setEnabled() >> ERROR');
+        });
+        AppCenter.Crashes.generateTestCrash();
     }
 };
 
