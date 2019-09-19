@@ -115,6 +115,19 @@ steps:
     mv Payload.zip HelloWorld.ipa
   displayName: 'Generating IPA file'
 
+- script: |
+    sudo gem install fastlane
+    fastlane run opt_out_usage
+  displayName: 'Installing fastlane and performing opt_out_usage'
+
+- task: IpaResign@1
+  inputs:
+    ipaPath: '$(Build.SourcesDirectory)/bin/s/HelloWorld.ipa'
+    signFileP12Path: '$(P12Certificate.secureFilePath)'
+    signFileP12Password: 'secret'
+    provFileProfilePath: '$(ProvisionCertificate.secureFilePath)'
+    installFastlane: False
+
 - task: CopyFiles@2
   inputs:
     SourceFolder: '$(Agent.BuildDirectory)'
