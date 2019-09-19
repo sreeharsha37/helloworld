@@ -115,31 +115,31 @@ steps:
     mv Payload.zip HelloWorld.ipa
   displayName: 'Generating IPA file'
 
-- script: |
-    sudo gem install fastlane
-    fastlane run opt_out_usage
-  displayName: 'Installing fastlane and performing opt_out_usage'
+# - script: |
+#     sudo gem install fastlane
+#     fastlane run opt_out_usage
+#   displayName: 'Installing fastlane and performing opt_out_usage'
 
 
-- task: DownloadSecureFile@1
-  name: P12Certificate1
-  displayName: 'Download P12 Secure Certificate'
-  inputs:
-    secureFile: 'Certificates.p12'
+# - task: DownloadSecureFile@1
+#   name: P12Certificate1
+#   displayName: 'Download P12 Secure Certificate'
+#   inputs:
+#     secureFile: 'Certificates.p12'
 
-- task: DownloadSecureFile@1
-  name: ProvisionCertificate1
-  displayName: 'Download Mobile Provision Certificate'
-  inputs:
-    secureFile: 'xcode10.mobileprovision'
+# - task: DownloadSecureFile@1
+#   name: ProvisionCertificate1
+#   displayName: 'Download Mobile Provision Certificate'
+#   inputs:
+#     secureFile: 'xcode10.mobileprovision'
 
-- task: IpaResign@1
-  inputs:
-    ipaPath: '**/*.ipa'
-    signFileP12Path: '$(P12Certificate1.secureFilePath)'
-    signFileP12Password: 'secret'
-    provFileProfilePath: '$(ProvisionCertificate1.secureFilePath)'
-    installFastlane: False
+# - task: IpaResign@1
+#   inputs:
+#     ipaPath: '**/*.ipa'
+#     signFileP12Path: '$(P12Certificate1.secureFilePath)'
+#     signFileP12Password: 'secret'
+#     provFileProfilePath: '$(ProvisionCertificate1.secureFilePath)'
+#     installFastlane: False
 
 - task: CopyFiles@2
   inputs:
