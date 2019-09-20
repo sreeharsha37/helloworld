@@ -166,5 +166,5 @@ steps:
 - task: PublishBuildArtifacts@1
   inputs:
     pathtoPublish: '$(Build.ArtifactStagingDirectory)'
-    artifactName: 'Apps and Symbols'
+    artifactName: 'MobileApps'
     artifactType: 'container'
