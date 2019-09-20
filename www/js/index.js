@@ -53,7 +53,6 @@ var app = {
         }, function() {
             console.log('setEnabled() >> ERROR');
         });
-        AppCenter.Crashes.generateTestCrash();
     }
 };
 
