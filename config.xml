@@ -17,13 +17,13 @@
     <allow-intent href="mailto:*" />
     <allow-intent href="geo:*" />
     <platform name="android">
-        <preference name="APP_SECRET" value="714288a2-3d4c-46bb-8f44-a2a305e35681" />
+        <preference name="APP_SECRET" value="3dbb1dbc-4e4a-45b5-91e0-97faff995497" />
         <preference name="APPCENTER_ANALYTICS_ENABLE_IN_JS" value="true" />
         <preference name="APPCENTER_CRASHES_ALWAYS_SEND" value="false" />
         <allow-intent href="market:*" />
     </platform>
     <platform name="ios">
-        <preference name="APP_SECRET" value="57800b9e-d35e-42aa-bef5-688558b11213" />
+        <preference name="APP_SECRET" value="ba39dbe9-483b-4858-a0a2-218af628e24c" />
         <preference name="APPCENTER_ANALYTICS_ENABLE_IN_JS" value="true" />
         <preference name="APPCENTER_CRASHES_ALWAYS_SEND" value="false" />
         <allow-intent href="itms:*" />
