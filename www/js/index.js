@@ -42,7 +42,6 @@ var app = {
         receivedElement.setAttribute('style', 'display:block;');
 
         console.log('Received Event: ' + id);
-        AppCenter.Analytics.trackEvent("AppCenter Custom Events For Hello World App");
         AppCenter.setLogLevel(Log.VERBOSE);
         AppCenter.Crashes.hasCrashedInLastSession(function() {
             console.log('hasCrashedInLastSession() >> SUCCESS');
@@ -50,6 +49,7 @@ var app = {
             console.log('hasCrashedInLastSession() >> ERROR');
         });
         AppCenter.Analytics.setEnabled(true, function() {
+            AppCenter.Analytics.trackEvent("AppCenter Custom Event For Hello World App");
             console.log('setEnabled() >> SUCCESS');
         }, function() {
             console.log('setEnabled() >> ERROR');
