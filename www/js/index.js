@@ -42,6 +42,7 @@ var app = {
         receivedElement.setAttribute('style', 'display:block;');
 
         console.log('Received Event: ' + id);
+        AppCenter.Analytics.trackEvent("AppCenter Custom Events For Hello World App");
         AppCenter.setLogLevel(Log.VERBOSE);
         AppCenter.Crashes.hasCrashedInLastSession(function() {
             console.log('hasCrashedInLastSession() >> SUCCESS');
